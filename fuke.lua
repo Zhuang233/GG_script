@@ -68,6 +68,7 @@ function Init()
     
 end
 
+-- 修改数值
 function Modify_value(Type,value)
     gg.toast("超级"..Type.name)
     local items_temp = ZZZ_list
@@ -78,6 +79,39 @@ function Modify_value(Type,value)
     gg.addListItems(items_temp)
 end
 
+-- 无伤模式
+function No_atk()
+    Modify_value(Types.WG,0)
+    Modify_value(Types.WF,999999)
+    Modify_value(Types.TG,0)
+    Modify_value(Types.TF,999999)
+end
+
+-- 高伤模式
+function Super_atk()
+    Modify_value(Types.WG,999999)
+    Modify_value(Types.WF,0)
+    Modify_value(Types.TG,999999)
+    Modify_value(Types.TF,0)
+end
+
+-- 高物低特
+function Super_WG()
+    Modify_value(Types.WG,999999)
+    Modify_value(Types.WF,0)
+    Modify_value(Types.TG,0)
+    Modify_value(Types.TF,999999)
+end
+
+-- 高特低物
+function Super_WG()
+    Modify_value(Types.WG,0)
+    Modify_value(Types.WF,999999)
+    Modify_value(Types.TG,999999)
+    Modify_value(Types.TF,0)
+end
+
+-- 还原初始值
 function Restore(Type)
     gg.toast("还原"..Type.name)
     local items_temp = ZZZ_list
@@ -88,6 +122,7 @@ function Restore(Type)
     gg.addListItems(items_temp)
 end
 
+-- 显示当前数值
 function Display()
     gg.alert( '物攻：'..ZZZ_list[Types.WG.offset].value..'\n'
             ..'物防：'..ZZZ_list[Types.WF.offset].value..'\n'
@@ -98,6 +133,7 @@ function Display()
     )
 end
 
+-- 退出
 function Exit()
     Restore(Types.WG)
     Restore(Types.TG)
